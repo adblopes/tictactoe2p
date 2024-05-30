@@ -46,29 +46,26 @@ def wait_for_input():
 
 def run_cursor_movement():
     while True:
-        try:
-            key = wait_for_input()
+        key = wait_for_input()
 
-            if key == b'\xe0':  # Arrow keys are a two-byte sequence in Windows
-                arrow_key = wait_for_input()
-                y, x = get_cursor_position()
+        if key == b'\xe0':  # Arrow keys are a two-byte sequence in Windows
+            arrow_key = wait_for_input()
+            y, x = get_cursor_position()
 
-                if arrow_key == b'H':  # Up arrow
-                    y = max(0, y - 1)
-                elif arrow_key == b'P':  # Down arrow
-                    y += 1
-                elif arrow_key == b'K':  # Left arrow
-                    x = max(0, x - 1)
-                elif arrow_key == b'M':  # Right arrow
-                    x += 1
-                
-                move_cursor(y, x)
-            elif key == b'\r':  # Enter key
-                return get_cursor_position()
-            elif key == b'\x03':
-                break
-        except KeyboardInterrupt:
-            break
+            if arrow_key == b'H':  # Up arrow
+                y = max(0, y - 1)
+            elif arrow_key == b'P':  # Down arrow
+                y += 1
+            elif arrow_key == b'K':  # Left arrow
+                x = max(0, x - 1)
+            elif arrow_key == b'M':  # Right arrow
+                x += 1
+            
+            move_cursor(y, x)
+        elif key == b'\r':  # Enter key
+            return get_cursor_position()
+        elif key == b'\x03':
+            raise KeyboardInterrupt
 
 if  __name__ == "__main__":
     run_cursor_movement()

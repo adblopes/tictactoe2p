@@ -36,17 +36,15 @@ def play():
     drawBoard()
     console_movement.move_cursor(0,0)
 
-    while(win != True):
+    while(True):
         coords = ()
         player = "X" if round % 2 == 0 else "O"
         
         try:
             coords = console_movement.run_cursor_movement()
-            if coords is None:
-                raise KeyboardInterrupt
         except KeyboardInterrupt:
             clear()
-            print("Program interrupted by user. Exiting...")
+            print("Program terminated by User. Exiting...")
             break
 
         coords = validate_coords(coords, player)
