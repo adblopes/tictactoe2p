@@ -55,10 +55,12 @@ def play():
             round += 1
 
             if win:
+                console_movement.move_cursor(10, 0)
                 input(f"Player {player} has won! Press ENTER to play again.")
                 play()
 
             if (round == 9):
+                console_movement.move_cursor(10, 0)
                 input("It's a tie! Press ENTER to settle the score!")
                 play()
 
