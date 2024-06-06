@@ -93,7 +93,7 @@ def check_rules(player, coords):
     countLines = 0
     countColunms = 0
 
-    if coords is None or player in playsX or player in playsO:
+    if coords is None or coords in playsX or coords in playsO:
         return None
     
     elif player == "X":
